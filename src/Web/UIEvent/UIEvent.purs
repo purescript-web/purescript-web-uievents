@@ -7,8 +7,8 @@ import Web.Event.Types (Event)
 
 foreign import data UIEvent :: Type
 
-uiEventToEvent :: UIEvent -> Event
-uiEventToEvent = unsafeCoerce
+toEvent :: UIEvent -> Event
+toEvent = unsafeCoerce
 
-readUIEvent :: Foreign -> F UIEvent
-readUIEvent = unsafeReadProtoTagged "UIEvent"
+read :: Foreign -> F UIEvent
+read = unsafeReadProtoTagged "UIEvent"
