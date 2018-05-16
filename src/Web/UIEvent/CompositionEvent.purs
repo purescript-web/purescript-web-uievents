@@ -1,19 +1,23 @@
 module Web.UIEvent.CompositionEvent where
 
-import Foreign (F, Foreign, unsafeReadTagged)
+import Data.Maybe (Maybe)
 import Unsafe.Coerce (unsafeCoerce)
-import Web.Event.Types (Event)
+import Web.Event.Event (Event)
+import Web.Internal.FFI (unsafeReadProtoTagged)
 import Web.UIEvent.UIEvent (UIEvent)
 
 foreign import data CompositionEvent :: Type
 
-toEvent :: CompositionEvent -> Event
-toEvent = unsafeCoerce
+fromUIEvent :: UIEvent -> Maybe CompositionEvent
+fromUIEvent = unsafeReadProtoTagged "CompositionEvent"
+
+fromEvent :: Event -> Maybe CompositionEvent
+fromEvent = unsafeReadProtoTagged "CompositionEvent"
 
 toUIEvent :: CompositionEvent -> UIEvent
 toUIEvent = unsafeCoerce
 
-read :: Foreign -> F CompositionEvent
-read = unsafeReadTagged "CompositionEvent"
+toEvent :: CompositionEvent -> Event
+toEvent = unsafeCoerce
 
 foreign import data_ :: CompositionEvent -> String

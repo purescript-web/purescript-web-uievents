@@ -1,20 +1,24 @@
 module Web.UIEvent.InputEvent where
 
-import Foreign (F, Foreign, unsafeReadTagged)
+import Data.Maybe (Maybe)
 import Unsafe.Coerce (unsafeCoerce)
-import Web.Event.Types (Event)
+import Web.Event.Event (Event)
+import Web.Internal.FFI (unsafeReadProtoTagged)
 import Web.UIEvent.UIEvent (UIEvent)
 
 foreign import data InputEvent :: Type
 
-toEvent :: InputEvent -> Event
-toEvent = unsafeCoerce
+fromUIEvent :: UIEvent -> Maybe InputEvent
+fromUIEvent = unsafeReadProtoTagged "InputEvent"
+
+fromEvent :: Event -> Maybe InputEvent
+fromEvent = unsafeReadProtoTagged "InputEvent"
 
 toUIEvent :: InputEvent -> UIEvent
 toUIEvent = unsafeCoerce
 
-read :: Foreign -> F InputEvent
-read = unsafeReadTagged "InputEvent"
+toEvent :: InputEvent -> Event
+toEvent = unsafeCoerce
 
 foreign import data_ :: InputEvent -> String
 

@@ -1,8 +1,11 @@
 module Web.UIEvent.WheelEvent
   ( WheelEvent
-  , toEvent
+  , fromMouseEvent
+  , fromUIEvent
+  , fromEvent
+  , toMouseEvent
   , toUIEvent
-  , read
+  , toEvent
   , deltaX
   , deltaY
   , deltaZ
@@ -17,21 +20,31 @@ import Prelude
 
 import Data.Enum (class BoundedEnum, class Enum, Cardinality(..), defaultPred, defaultSucc, toEnum)
 import Data.Maybe (Maybe(..), fromJust)
-import Foreign (F, Foreign, unsafeReadTagged)
 import Unsafe.Coerce (unsafeCoerce)
 import Web.Event.Event (Event)
+import Web.Internal.FFI (unsafeReadProtoTagged)
+import Web.UIEvent.MouseEvent (MouseEvent)
 import Web.UIEvent.UIEvent (UIEvent)
 
 foreign import data WheelEvent :: Type
 
-toEvent :: WheelEvent -> Event
-toEvent = unsafeCoerce
+fromMouseEvent :: MouseEvent -> Maybe WheelEvent
+fromMouseEvent = unsafeReadProtoTagged "WheelEvent"
+
+fromUIEvent :: UIEvent -> Maybe WheelEvent
+fromUIEvent = unsafeReadProtoTagged "WheelEvent"
+
+fromEvent :: Event -> Maybe WheelEvent
+fromEvent = unsafeReadProtoTagged "WheelEvent"
+
+toMouseEvent :: WheelEvent -> MouseEvent
+toMouseEvent = unsafeCoerce
 
 toUIEvent :: WheelEvent -> UIEvent
 toUIEvent = unsafeCoerce
 
-read :: Foreign -> F WheelEvent
-read = unsafeReadTagged "WheelEvent"
+toEvent :: WheelEvent -> Event
+toEvent = unsafeCoerce
 
 foreign import deltaX :: WheelEvent -> Number
 

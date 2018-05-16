@@ -1,8 +1,9 @@
 module Web.UIEvent.MouseEvent
   ( MouseEvent
-  , toEvent
+  , fromUIEvent
+  , fromEvent
   , toUIEvent
-  , read
+  , toEvent
   , screenX
   , screenY
   , clientX
@@ -24,21 +25,25 @@ import Prelude
 import Data.Maybe (Maybe)
 import Data.Nullable (Nullable, toMaybe)
 import Effect (Effect)
-import Foreign (F, Foreign, unsafeReadTagged)
 import Unsafe.Coerce (unsafeCoerce)
-import Web.Event.Types (Event, EventTarget)
+import Web.Event.Event (Event)
+import Web.Event.EventTarget (EventTarget)
+import Web.Internal.FFI (unsafeReadProtoTagged)
 import Web.UIEvent.UIEvent (UIEvent)
 
 foreign import data MouseEvent :: Type
 
-toEvent :: MouseEvent -> Event
-toEvent = unsafeCoerce
+fromUIEvent :: UIEvent -> Maybe MouseEvent
+fromUIEvent = unsafeReadProtoTagged "MouseEvent"
+
+fromEvent :: Event -> Maybe MouseEvent
+fromEvent = unsafeReadProtoTagged "MouseEvent"
 
 toUIEvent :: MouseEvent -> UIEvent
 toUIEvent = unsafeCoerce
 
-read :: Foreign -> F MouseEvent
-read = unsafeReadTagged "MouseEvent"
+toEvent :: MouseEvent -> Event
+toEvent = unsafeCoerce
 
 foreign import screenX :: MouseEvent -> Int
 

@@ -14,9 +14,10 @@
 -- |
 module Web.UIEvent.KeyboardEvent
   ( KeyboardEvent
-  , toEvent
+  , fromUIEvent
+  , fromEvent
   , toUIEvent
-  , read
+  , toEvent
   , key
   , code
   , locationIndex
@@ -38,21 +39,24 @@ import Prelude
 import Data.Enum (class BoundedEnum, class Enum, Cardinality(..), defaultPred, defaultSucc, toEnum)
 import Data.Maybe (Maybe(..), fromJust)
 import Effect (Effect)
-import Foreign (F, Foreign, unsafeReadTagged)
 import Unsafe.Coerce (unsafeCoerce)
-import Web.Event.Types (Event)
+import Web.Event.Event (Event)
+import Web.Internal.FFI (unsafeReadProtoTagged)
 import Web.UIEvent.UIEvent (UIEvent)
 
 foreign import data KeyboardEvent :: Type
 
-toEvent :: KeyboardEvent -> Event
-toEvent = unsafeCoerce
+fromUIEvent :: UIEvent -> Maybe KeyboardEvent
+fromUIEvent = unsafeReadProtoTagged "KeyboardEvent"
+
+fromEvent :: Event -> Maybe KeyboardEvent
+fromEvent = unsafeReadProtoTagged "KeyboardEvent"
 
 toUIEvent :: KeyboardEvent -> UIEvent
 toUIEvent = unsafeCoerce
 
-read :: Foreign -> F KeyboardEvent
-read = unsafeReadTagged "KeyboardEvent"
+toEvent :: KeyboardEvent -> Event
+toEvent = unsafeCoerce
 
 -- | A non-empty Unicode character string containing the printable representation
 -- | of the key, if available.

@@ -1,8 +1,9 @@
 module Web.UIEvent.FocusEvent
   ( FocusEvent
-  , toEvent
+  , fromUIEvent
+  , fromEvent
   , toUIEvent
-  , read
+  , toEvent
   , relatedTarget
   ) where
 
@@ -10,21 +11,25 @@ import Prelude
 
 import Data.Maybe (Maybe)
 import Data.Nullable (Nullable, toMaybe)
-import Foreign (F, Foreign, unsafeReadTagged)
 import Unsafe.Coerce (unsafeCoerce)
-import Web.Event.Types (Event, EventTarget)
+import Web.Event.Event (Event)
+import Web.Event.EventTarget (EventTarget)
+import Web.Internal.FFI (unsafeReadProtoTagged)
 import Web.UIEvent.UIEvent (UIEvent)
 
 foreign import data FocusEvent :: Type
 
-toEvent :: FocusEvent -> Event
-toEvent = unsafeCoerce
+fromUIEvent :: UIEvent -> Maybe FocusEvent
+fromUIEvent = unsafeReadProtoTagged "FocusEvent"
+
+fromEvent :: Event -> Maybe FocusEvent
+fromEvent = unsafeReadProtoTagged "FocusEvent"
 
 toUIEvent :: FocusEvent -> UIEvent
 toUIEvent = unsafeCoerce
 
-read :: Foreign -> F FocusEvent
-read = unsafeReadTagged "FocusEvent"
+toEvent :: FocusEvent -> Event
+toEvent = unsafeCoerce
 
 foreign import _relatedTarget :: FocusEvent -> Nullable EventTarget
 
