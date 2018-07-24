@@ -16,6 +16,14 @@ exports.clientY = function (e) {
   return e.clientY;
 };
 
+exports.offsetX = function (e) {
+  return e.offsetX;
+};
+
+exports.offsetY = function (e) {
+  return e.offsetY;
+};
+
 exports.pageX = function (e) {
   return e.pageX;
 };

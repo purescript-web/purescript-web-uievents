@@ -49,6 +49,10 @@ foreign import screenX :: MouseEvent -> Int
 
 foreign import screenY :: MouseEvent -> Int
 
+foreign import offsetX :: MouseEvent -> Int
+
+foreign import offsetY :: MouseEvent -> Int
+
 foreign import clientX :: MouseEvent -> Int
 
 foreign import clientY :: MouseEvent -> Int
