@@ -18,7 +18,6 @@ module Web.UIEvent.MouseEvent
   , relatedTarget
   , buttons
   , getModifierState
-  , detail
   ) where
 
 import Prelude
@@ -79,5 +78,3 @@ foreign import getModifierState
   :: String
   -> MouseEvent
   -> Effect Boolean
-
-foreign import detail :: MouseEvent -> Int
