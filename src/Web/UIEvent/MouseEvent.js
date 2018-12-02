@@ -59,7 +59,3 @@ exports.getModifierState = function (s) {
     };
   };
 };
-
-exports.detail = function (e) {
-  return e.detail;
-};
