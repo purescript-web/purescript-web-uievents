@@ -8,6 +8,8 @@ module Web.UIEvent.MouseEvent
   , screenY
   , clientX
   , clientY
+  , offsetX
+  , offsetY
   , pageX
   , pageY
   , ctrlKey
@@ -52,6 +54,10 @@ foreign import screenY :: MouseEvent -> Int
 foreign import clientX :: MouseEvent -> Int
 
 foreign import clientY :: MouseEvent -> Int
+
+foreign import offsetX :: MouseEvent -> Int
+
+foreign import offsetY :: MouseEvent -> Int
 
 foreign import pageX :: MouseEvent -> Int
 
