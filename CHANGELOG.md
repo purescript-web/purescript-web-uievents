@@ -5,22 +5,24 @@ Notable changes to this project are documented in this file. The format is based
 ## [Unreleased]
 
 Breaking changes:
+- Added support for PureScript 0.14 and dropped support for all previous versions (#11)
 
 New features:
 
 Bugfixes:
 
 Other improvements:
+- Migrated CI to GitHub Actions and updated installation instructions to use Spago (#9)
+- Added a CHANGELOG.md file and pull request template (#12, #13)
 
 ## [v2.0.0](https://github.com/purescript-web/purescript-web-uievents/releases/tag/v2.0.0) - 2019-02-23
 
-Bumped `-web-events` dependency, `Event.defaultPrevented` is now effectful.
+- Bumped `-web-events` dependency, `Event.defaultPrevented` is now effectful.
 
 ## [v1.1.0](https://github.com/purescript-web/purescript-web-uievents/releases/tag/v1.1.0) - 2018-12-02
 
-Added `detail` and `view` for `UIEvent`
+- Added `detail` and `view` for `UIEvent`
 
 ## [v1.0.0](https://github.com/purescript-web/purescript-web-uievents/releases/tag/v1.0.0) - 2018-05-27
 
-Initial release
-
+- Initial release
