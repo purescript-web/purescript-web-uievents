@@ -10,6 +10,8 @@ module Web.UIEvent.MouseEvent
   , clientY
   , pageX
   , pageY
+  , movementX
+  , movementY
   , ctrlKey
   , shiftKey
   , altKey
@@ -56,6 +58,10 @@ foreign import clientY :: MouseEvent -> Int
 foreign import pageX :: MouseEvent -> Int
 
 foreign import pageY :: MouseEvent -> Int
+
+foreign import movementX :: MouseEvent -> Int
+
+foreign import movementY :: MouseEvent -> Int
 
 foreign import ctrlKey :: MouseEvent -> Boolean
 

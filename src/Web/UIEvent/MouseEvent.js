@@ -24,6 +24,14 @@ exports.pageY = function (e) {
   return e.pageY;
 };
 
+exports.movementX = function (e) {
+  return e.movementX;
+};
+
+exports.movementY = function (e) {
+  return e.movementY;
+};
+
 exports.ctrlKey = function (e) {
   return e.ctrlKey;
 };
