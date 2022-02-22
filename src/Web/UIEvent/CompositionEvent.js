@@ -1,5 +1,5 @@
 "use strict";
 
-exports.data_ = function (e) {
+export function data_(e) {
   return e.data;
-};
+}
