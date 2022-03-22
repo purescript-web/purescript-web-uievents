@@ -1,5 +1,3 @@
-"use strict";
-
 export function _view(e) {
   return e.view;
 }

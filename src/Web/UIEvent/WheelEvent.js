@@ -1,5 +1,3 @@
-"use strict";
-
 export function deltaX(e) {
   return e.deltaX;
 }

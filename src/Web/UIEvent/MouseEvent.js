@@ -1,5 +1,3 @@
-"use strict";
-
 export function screenX(e) {
   return e.screenX;
 }

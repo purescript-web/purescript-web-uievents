@@ -1,5 +1,3 @@
-"use strict";
-
 export function key(e) {
   return e.key;
 }
