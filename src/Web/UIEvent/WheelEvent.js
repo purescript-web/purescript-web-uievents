@@ -1,17 +1,15 @@
-"use strict";
-
-exports.deltaX = function (e) {
+export function deltaX(e) {
   return e.deltaX;
-};
+}
 
-exports.deltaY = function (e) {
+export function deltaY(e) {
   return e.deltaY;
-};
+}
 
-exports.deltaZ = function (e) {
+export function deltaZ(e) {
   return e.deltaZ;
-};
+}
 
-exports.deltaModeIndex = function (e) {
+export function deltaModeIndex(e) {
   return e.deltaModeIndex;
-};
+}

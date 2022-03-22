@@ -1,5 +1,3 @@
-"use strict";
-
-exports._relatedTarget = function (e) {
+export function _relatedTarget(e) {
   return e.relatedTarget;
-};
+}

@@ -1,45 +1,43 @@
-"use strict";
-
-exports.key = function (e) {
+export function key(e) {
   return e.key;
-};
+}
 
-exports.code = function (e) {
+export function code(e) {
   return e.code;
-};
+}
 
-exports.locationIndex = function (e) {
+export function locationIndex(e) {
   return e.location;
-};
+}
 
-exports.ctrlKey = function (e) {
+export function ctrlKey(e) {
   return e.ctrlKey;
-};
+}
 
-exports.shiftKey = function (e) {
+export function shiftKey(e) {
   return e.shiftKey;
-};
+}
 
-exports.altKey = function (e) {
+export function altKey(e) {
   return e.altKey;
-};
+}
 
-exports.metaKey = function (e) {
+export function metaKey(e) {
   return e.metaKey;
-};
+}
 
-exports.repeat = function (e) {
+export function repeat(e) {
   return e.repeat;
-};
+}
 
-exports.isComposing = function (e) {
+export function isComposing(e) {
   return e.isComposing;
-};
+}
 
-exports.getModifierState = function (s) {
+export function getModifierState(s) {
   return function (e) {
     return function () {
       return e.getModifierState(s);
     };
   };
-};
+}
