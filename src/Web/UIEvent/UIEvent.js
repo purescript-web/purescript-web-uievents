@@ -1,9 +1,9 @@
 "use strict";
 
-exports._view = function (e) {
+export function _view(e) {
   return e.view;
-};
+}
 
-exports.detail = function (e) {
+export function detail(e) {
   return e.detail;
-};
+}

@@ -1,9 +1,9 @@
 "use strict";
 
-exports.data_ = function (e) {
+export function data_(e) {
   return e.data;
-};
+}
 
-exports.isComposing = function (e) {
+export function isComposing(e) {
   return e.isComposing;
-};
+}
