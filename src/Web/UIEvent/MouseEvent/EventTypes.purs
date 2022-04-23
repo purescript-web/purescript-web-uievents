@@ -2,6 +2,9 @@ module Web.UIEvent.MouseEvent.EventTypes where
 
 import Web.Event.Event (EventType(..))
 
+auxclick :: EventType
+auxclick = EventType "auxclick"
+
 click :: EventType
 click = EventType "click"
 
