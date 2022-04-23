@@ -12,7 +12,7 @@ New features:
 Bugfixes:
 
 Other improvements:
-- Add auxclick to MouseEvent (#18)
+- Add auxclick to MouseEvent (#18 by @joe-op)
 
 ## [v3.0.0](https://github.com/purescript-web/purescript-web-uievents/releases/tag/v3.0.0) - 2021-02-26
 
