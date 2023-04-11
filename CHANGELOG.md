@@ -5,7 +5,7 @@ Notable changes to this project are documented in this file. The format is based
 ## [Unreleased]
 
 Breaking changes:
-- Add null support for `data` property of `InputEvent` 
+- Add null support for `data` property of `InputEvent` (#21)
 
 New features:
 
