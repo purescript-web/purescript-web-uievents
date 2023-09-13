@@ -2,8 +2,6 @@ module Web.UIEvent.InputEvent.InputTypes where
 
 import Prelude
 
-import Data.Maybe (Maybe(..))
-
 data InputType
   = InsertText
   | InsertReplacementText
@@ -51,105 +49,108 @@ data InputType
   | FormatBackColor
   | FormatFontColor
   | FormatFontName
+  | Other String
 
 derive instance eqInputType :: Eq InputType
+derive instance ordInputType :: Ord InputType
 
 instance showInputType :: Show InputType where
-  show = fromEnumInputType
+  show = print
 
-toEnumInputType :: String -> Maybe InputType
-toEnumInputType "insertText" = Just InsertText
-toEnumInputType "insertReplacementText" = Just InsertReplacementText
-toEnumInputType "insertLineBreak" = Just InsertLineBreak
-toEnumInputType "insertParagraph" = Just InsertParagraph
-toEnumInputType "insertOrderedList" = Just InsertOrderedList
-toEnumInputType "insertUnorderedList" = Just InsertUnorderedList
-toEnumInputType "insertHorizontalRule" = Just InsertHorizontalRule
-toEnumInputType "insertFromYank" = Just InsertFromYank
-toEnumInputType "insertFromDrop" = Just InsertFromDrop
-toEnumInputType "insertFromPaste" = Just InsertFromPaste
-toEnumInputType "insertFromPasteAsQuotation" = Just InsertFromPasteAsQuotation
-toEnumInputType "insertTranspose" = Just InsertTranspose
-toEnumInputType "insertCompositionText" = Just InsertCompositionText
-toEnumInputType "insertLink" = Just InsertLink
-toEnumInputType "deleteWordBackward" = Just DeleteWordBackward
-toEnumInputType "deleteWordForward" = Just DeleteWordForward
-toEnumInputType "deleteSoftLineBackward" = Just DeleteSoftLineBackward
-toEnumInputType "deleteSoftLineForward" = Just DeleteSoftLineForward
-toEnumInputType "deleteEntireSoftLine" = Just DeleteEntireSoftLine
-toEnumInputType "deleteHardLineBackward" = Just DeleteHardLineBackward
-toEnumInputType "deleteHardLineForward" = Just DeleteHardLineForward
-toEnumInputType "deleteByDrag" = Just DeleteByDrag
-toEnumInputType "deleteByCut" = Just DeleteByCut
-toEnumInputType "deleteContent" = Just DeleteContent
-toEnumInputType "deleteContentBackward" = Just DeleteContentBackward
-toEnumInputType "deleteContentForward" = Just DeleteContentForward
-toEnumInputType "historyUndo" = Just HistoryUndo
-toEnumInputType "historyRedo" = Just HistoryRedo
-toEnumInputType "formatBold" = Just FormatBold
-toEnumInputType "formatItalic" = Just FormatItalic
-toEnumInputType "formatUnderline" = Just FormatUnderline
-toEnumInputType "formatStrikeThrough" = Just FormatStrikeThrough
-toEnumInputType "formatSuperscript" = Just FormatSuperscript
-toEnumInputType "formatSubscript" = Just FormatSubscript
-toEnumInputType "formatJustifyFull" = Just FormatJustifyFull
-toEnumInputType "formatJustifyCenter" = Just FormatJustifyCenter
-toEnumInputType "formatJustifyRight" = Just FormatJustifyRight
-toEnumInputType "formatJustifyLeft" = Just FormatJustifyLeft
-toEnumInputType "formatIndent" = Just FormatIndent
-toEnumInputType "formatOutdent" = Just FormatOutdent
-toEnumInputType "formatRemove" = Just FormatRemove
-toEnumInputType "formatSetBlockTextDirection" = Just FormatSetBlockTextDirection
-toEnumInputType "formatSetInlineTextDirection" = Just FormatSetInlineTextDirection
-toEnumInputType "formatBackColor" = Just FormatBackColor
-toEnumInputType "formatFontColor" = Just FormatFontColor
-toEnumInputType "formatFontName" = Just FormatFontName
-toEnumInputType _ = Nothing
+parse :: String -> InputType
+parse "insertText" = InsertText
+parse "insertReplacementText" = InsertReplacementText
+parse "insertLineBreak" = InsertLineBreak
+parse "insertParagraph" = InsertParagraph
+parse "insertOrderedList" = InsertOrderedList
+parse "insertUnorderedList" = InsertUnorderedList
+parse "insertHorizontalRule" = InsertHorizontalRule
+parse "insertFromYank" = InsertFromYank
+parse "insertFromDrop" = InsertFromDrop
+parse "insertFromPaste" = InsertFromPaste
+parse "insertFromPasteAsQuotation" = InsertFromPasteAsQuotation
+parse "insertTranspose" = InsertTranspose
+parse "insertCompositionText" = InsertCompositionText
+parse "insertLink" = InsertLink
+parse "deleteWordBackward" = DeleteWordBackward
+parse "deleteWordForward" = DeleteWordForward
+parse "deleteSoftLineBackward" = DeleteSoftLineBackward
+parse "deleteSoftLineForward" = DeleteSoftLineForward
+parse "deleteEntireSoftLine" = DeleteEntireSoftLine
+parse "deleteHardLineBackward" = DeleteHardLineBackward
+parse "deleteHardLineForward" = DeleteHardLineForward
+parse "deleteByDrag" = DeleteByDrag
+parse "deleteByCut" = DeleteByCut
+parse "deleteContent" = DeleteContent
+parse "deleteContentBackward" = DeleteContentBackward
+parse "deleteContentForward" = DeleteContentForward
+parse "historyUndo" = HistoryUndo
+parse "historyRedo" = HistoryRedo
+parse "formatBold" = FormatBold
+parse "formatItalic" = FormatItalic
+parse "formatUnderline" = FormatUnderline
+parse "formatStrikeThrough" = FormatStrikeThrough
+parse "formatSuperscript" = FormatSuperscript
+parse "formatSubscript" = FormatSubscript
+parse "formatJustifyFull" = FormatJustifyFull
+parse "formatJustifyCenter" = FormatJustifyCenter
+parse "formatJustifyRight" = FormatJustifyRight
+parse "formatJustifyLeft" = FormatJustifyLeft
+parse "formatIndent" = FormatIndent
+parse "formatOutdent" = FormatOutdent
+parse "formatRemove" = FormatRemove
+parse "formatSetBlockTextDirection" = FormatSetBlockTextDirection
+parse "formatSetInlineTextDirection" = FormatSetInlineTextDirection
+parse "formatBackColor" = FormatBackColor
+parse "formatFontColor" = FormatFontColor
+parse "formatFontName" = FormatFontName
+parse s = Other s
 
-fromEnumInputType :: InputType -> String
-fromEnumInputType InsertText = "insertText"
-fromEnumInputType InsertReplacementText = "insertReplacementText"
-fromEnumInputType InsertLineBreak = "insertLineBreak"
-fromEnumInputType InsertParagraph = "insertParagraph"
-fromEnumInputType InsertOrderedList = "insertOrderedList"
-fromEnumInputType InsertUnorderedList = "insertUnorderedList"
-fromEnumInputType InsertHorizontalRule = "insertHorizontalRule"
-fromEnumInputType InsertFromYank = "insertFromYank"
-fromEnumInputType InsertFromDrop = "insertFromDrop"
-fromEnumInputType InsertFromPaste = "insertFromPaste"
-fromEnumInputType InsertFromPasteAsQuotation = "insertFromPasteAsQuotation"
-fromEnumInputType InsertTranspose = "insertTranspose"
-fromEnumInputType InsertCompositionText = "insertCompositionText"
-fromEnumInputType InsertLink = "insertLink"
-fromEnumInputType DeleteWordBackward = "deleteWordBackward"
-fromEnumInputType DeleteWordForward = "deleteWordForward"
-fromEnumInputType DeleteSoftLineBackward = "deleteSoftLineBackward"
-fromEnumInputType DeleteSoftLineForward = "deleteSoftLineForward"
-fromEnumInputType DeleteEntireSoftLine = "deleteEntireSoftLine"
-fromEnumInputType DeleteHardLineBackward = "deleteHardLineBackward"
-fromEnumInputType DeleteHardLineForward = "deleteHardLineForward"
-fromEnumInputType DeleteByDrag = "deleteByDrag"
-fromEnumInputType DeleteByCut = "deleteByCut"
-fromEnumInputType DeleteContent = "deleteContent"
-fromEnumInputType DeleteContentBackward = "deleteContentBackward"
-fromEnumInputType DeleteContentForward = "deleteContentForward"
-fromEnumInputType HistoryUndo = "historyUndo"
-fromEnumInputType HistoryRedo = "historyRedo"
-fromEnumInputType FormatBold = "formatBold"
-fromEnumInputType FormatItalic = "formatItalic"
-fromEnumInputType FormatUnderline = "formatUnderline"
-fromEnumInputType FormatStrikeThrough = "formatStrikeThrough"
-fromEnumInputType FormatSuperscript = "formatSuperscript"
-fromEnumInputType FormatSubscript = "formatSubscript"
-fromEnumInputType FormatJustifyFull = "formatJustifyFull"
-fromEnumInputType FormatJustifyCenter = "formatJustifyCenter"
-fromEnumInputType FormatJustifyRight = "formatJustifyRight"
-fromEnumInputType FormatJustifyLeft = "formatJustifyLeft"
-fromEnumInputType FormatIndent = "formatIndent"
-fromEnumInputType FormatOutdent = "formatOutdent"
-fromEnumInputType FormatRemove = "formatRemove"
-fromEnumInputType FormatSetBlockTextDirection = "formatSetBlockTextDirection"
-fromEnumInputType FormatSetInlineTextDirection = "formatSetInlineTextDirection"
-fromEnumInputType FormatBackColor = "formatBackColor"
-fromEnumInputType FormatFontColor = "formatFontColor"
-fromEnumInputType FormatFontName = "formatFontName"
+print :: InputType -> String
+print InsertText = "insertText"
+print InsertReplacementText = "insertReplacementText"
+print InsertLineBreak = "insertLineBreak"
+print InsertParagraph = "insertParagraph"
+print InsertOrderedList = "insertOrderedList"
+print InsertUnorderedList = "insertUnorderedList"
+print InsertHorizontalRule = "insertHorizontalRule"
+print InsertFromYank = "insertFromYank"
+print InsertFromDrop = "insertFromDrop"
+print InsertFromPaste = "insertFromPaste"
+print InsertFromPasteAsQuotation = "insertFromPasteAsQuotation"
+print InsertTranspose = "insertTranspose"
+print InsertCompositionText = "insertCompositionText"
+print InsertLink = "insertLink"
+print DeleteWordBackward = "deleteWordBackward"
+print DeleteWordForward = "deleteWordForward"
+print DeleteSoftLineBackward = "deleteSoftLineBackward"
+print DeleteSoftLineForward = "deleteSoftLineForward"
+print DeleteEntireSoftLine = "deleteEntireSoftLine"
+print DeleteHardLineBackward = "deleteHardLineBackward"
+print DeleteHardLineForward = "deleteHardLineForward"
+print DeleteByDrag = "deleteByDrag"
+print DeleteByCut = "deleteByCut"
+print DeleteContent = "deleteContent"
+print DeleteContentBackward = "deleteContentBackward"
+print DeleteContentForward = "deleteContentForward"
+print HistoryUndo = "historyUndo"
+print HistoryRedo = "historyRedo"
+print FormatBold = "formatBold"
+print FormatItalic = "formatItalic"
+print FormatUnderline = "formatUnderline"
+print FormatStrikeThrough = "formatStrikeThrough"
+print FormatSuperscript = "formatSuperscript"
+print FormatSubscript = "formatSubscript"
+print FormatJustifyFull = "formatJustifyFull"
+print FormatJustifyCenter = "formatJustifyCenter"
+print FormatJustifyRight = "formatJustifyRight"
+print FormatJustifyLeft = "formatJustifyLeft"
+print FormatIndent = "formatIndent"
+print FormatOutdent = "formatOutdent"
+print FormatRemove = "formatRemove"
+print FormatSetBlockTextDirection = "formatSetBlockTextDirection"
+print FormatSetInlineTextDirection = "formatSetInlineTextDirection"
+print FormatBackColor = "formatBackColor"
+print FormatFontColor = "formatFontColor"
+print FormatFontName = "formatFontName"
+print (Other s) = s

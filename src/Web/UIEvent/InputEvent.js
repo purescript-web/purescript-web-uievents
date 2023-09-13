@@ -6,6 +6,6 @@ export function isComposing(e) {
   return e.isComposing;
 }
 
-export function inputType_(e) {
+export function _inputType(e) {
   return e.inputType;
 }

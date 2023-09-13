@@ -6,7 +6,7 @@ import Data.Maybe (Maybe)
 import Unsafe.Coerce (unsafeCoerce)
 import Web.Event.Event (Event)
 import Web.Internal.FFI (unsafeReadProtoTagged)
-import Web.UIEvent.InputEvent.InputTypes (InputType, toEnumInputType)
+import Web.UIEvent.InputEvent.InputTypes (InputType, parse)
 import Web.UIEvent.UIEvent (UIEvent)
 
 foreign import data InputEvent :: Type
@@ -27,8 +27,8 @@ foreign import data_ :: InputEvent -> String
 
 foreign import isComposing :: InputEvent -> Boolean
 
-foreign import inputType_ :: InputEvent -> String
+foreign import _inputType :: InputEvent -> String
 
-inputType :: InputEvent -> Maybe InputType
-inputType = toEnumInputType <<< inputType_
+inputType :: InputEvent -> InputType
+inputType = parse <<< _inputType
 
