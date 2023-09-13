@@ -6,7 +6,7 @@ import Data.Maybe (Maybe)
 import Unsafe.Coerce (unsafeCoerce)
 import Web.Event.Event (Event)
 import Web.Internal.FFI (unsafeReadProtoTagged)
-import Web.UIEvent.InputEvent.InputTypes (InputType, parse)
+import Web.UIEvent.InputEvent.InputType (InputType, parse)
 import Web.UIEvent.UIEvent (UIEvent)
 
 foreign import data InputEvent :: Type

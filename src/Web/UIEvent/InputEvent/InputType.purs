@@ -1,4 +1,4 @@
-module Web.UIEvent.InputEvent.InputTypes where
+module Web.UIEvent.InputEvent.InputType where
 
 import Prelude
 
