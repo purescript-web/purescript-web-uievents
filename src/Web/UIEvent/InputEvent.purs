@@ -1,8 +1,19 @@
-module Web.UIEvent.InputEvent where
+module Web.UIEvent.InputEvent
+  ( InputEvent
+  , data_
+  , fromEvent
+  , fromUIEvent
+  , isComposing
+  , toEvent
+  , toUIEvent
+  ) where
+
+import Prelude
 
 import Prelude
 
 import Data.Maybe (Maybe)
+import Data.Nullable (Nullable, toMaybe)
 import Unsafe.Coerce (unsafeCoerce)
 import Web.Event.Event (Event)
 import Web.Internal.FFI (unsafeReadProtoTagged)
@@ -23,7 +34,10 @@ toUIEvent = unsafeCoerce
 toEvent :: InputEvent -> Event
 toEvent = unsafeCoerce
 
-foreign import data_ :: InputEvent -> String
+foreign import _data_ :: InputEvent -> Nullable String
+
+data_ :: InputEvent -> Maybe String
+data_ = toMaybe <$> _data_
 
 foreign import isComposing :: InputEvent -> Boolean
 

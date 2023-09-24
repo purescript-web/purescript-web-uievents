@@ -1,4 +1,4 @@
-export function data_(e) {
+export function _data_(e) {
   return e.data;
 }
 
