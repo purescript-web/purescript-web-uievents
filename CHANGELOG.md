@@ -7,11 +7,15 @@ Notable changes to this project are documented in this file. The format is based
 Breaking changes:
 
 New features:
-- Add support for inputType on InputEvents (#23 by @MonaMayrhofer)
 
 Bugfixes:
 
 Other improvements:
+
+## [v4.1.0](https://github.com/purescript-web/purescript-web-uievents/releases/tag/v4.1.0) - 2023-09-24
+
+New features:
+- Add support for inputType on InputEvents (#23 by @MonaMayrhofer)
 
 ## [v4.0.0](https://github.com/purescript-web/purescript-web-uievents/releases/tag/v4.0.0) - 2022-04-27
 
