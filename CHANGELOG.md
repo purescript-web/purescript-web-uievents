@@ -7,6 +7,7 @@ Notable changes to this project are documented in this file. The format is based
 Breaking changes:
 
 New features:
+- Add support for inputType on InputEvents (#23 by @MonaMayrhofer)
 
 Bugfixes:
 
