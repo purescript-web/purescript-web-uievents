@@ -1,14 +1,13 @@
 module Web.UIEvent.InputEvent
   ( InputEvent
-  , data_
   , fromEvent
   , fromUIEvent
-  , isComposing
   , toEvent
   , toUIEvent
+  , data_
+  , isComposing
+  , inputType
   ) where
-
-import Prelude
 
 import Prelude
 
@@ -45,4 +44,3 @@ foreign import _inputType :: InputEvent -> String
 
 inputType :: InputEvent -> InputType
 inputType = parse <<< _inputType
-
