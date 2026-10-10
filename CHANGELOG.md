@@ -12,6 +12,12 @@ Bugfixes:
 
 Other improvements:
 
+## [v5.0.1](https://github.com/purescript-web/purescript-web-uievents/releases/tag/v5.0.1) - 2026-10-10
+
+Other improvements:
+- Migrate from Bower/Pulp to registry-backed Spago, preserving published dependency bounds (#25 by @thomashoneyman)
+- Modernize CI and development tooling with Oxlint, Oxfmt, and purs-tidy (#25 by @thomashoneyman)
+
 ## [v5.0.0](https://github.com/purescript-web/purescript-web-uievents/releases/tag/v5.0.0) - 2023-09-24
 
 Breaking changes:
